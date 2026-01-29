@@ -38,7 +38,7 @@ Done! Claude can now delegate tasks to Codex and Gemini CLI tools.
 | **Smart routing** | Automatically picks the right tool for your task |
 | **MCP integration** | Native Codex integration via Model Context Protocol |
 | **Shell fallback** | Gemini works via shell when MCP isn't available |
-| **Global shortcuts** | Use `/codex`, `/gemini`, `/delegate` from any project |
+| **Global shortcut** | Use `/delegate` from any project — with smart routing or explicit selection |
 | **Synthesized results** | Get clean summaries with diffs, not raw output |
 
 ## Commands
@@ -53,15 +53,15 @@ Done! Claude can now delegate tasks to Codex and Gemini CLI tools.
 | `/cli-handoff:delegate <task>` | Smart routing — picks Codex or Gemini automatically |
 | `/cli-handoff:uninstall` | Remove plugin and global shortcuts |
 
-### Global Shortcuts
+### Global Shortcut
 
-After running setup, these shortcuts work from any project:
+After running setup, the `/delegate` shortcut works from any project:
 
-| Shortcut | Description |
-|----------|-------------|
-| `/codex <task>` | Direct alias for Codex delegation |
-| `/gemini <task>` | Direct alias for Gemini delegation |
-| `/delegate <task>` | Smart routing alias |
+| Command | Description |
+|---------|-------------|
+| `/delegate <task>` | Smart routing — picks Codex or Gemini automatically |
+| `/delegate codex <task>` | Explicitly route to Codex CLI |
+| `/delegate gemini <task>` | Explicitly route to Gemini CLI |
 
 ## Smart Routing
 
@@ -115,15 +115,19 @@ The `/delegate` command analyzes your task and routes it automatically:
 **Examples:**
 
 ```bash
-# Codex tasks
-/codex fix the null pointer exception in auth.go
-/codex refactor the database layer to use connection pooling
-/codex review the error handling in api/handlers.go
+# Explicit Codex routing
+/delegate codex fix the null pointer exception in auth.go
+/delegate codex refactor the database layer to use connection pooling
+/delegate codex review the error handling in api/handlers.go
 
-# Gemini tasks
-/gemini explain how the authentication flow works
-/gemini what are the best practices for Go error handling
-/gemini describe the architecture of this microservice
+# Explicit Gemini routing
+/delegate gemini explain how the authentication flow works
+/delegate gemini what are the best practices for Go error handling
+/delegate gemini describe the architecture of this microservice
+
+# Auto-routing (no explicit selector)
+/delegate fix the null pointer exception in auth.go
+/delegate explain how the authentication flow works
 ```
 
 ## How It Works
@@ -201,9 +205,8 @@ cli-handoff/
 │   ├── delegate.md      # Smart routing
 │   └── uninstall.md     # Cleanup command
 └── skills/
-    ├── codex.md         # Global /codex shortcut
-    ├── gemini.md        # Global /gemini shortcut
-    └── delegate.md      # Global /delegate shortcut
+    └── delegate/
+        └── SKILL.md     # Global /delegate shortcut with routing
 ```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.

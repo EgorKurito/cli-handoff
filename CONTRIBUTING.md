@@ -39,9 +39,8 @@ cli-handoff/
 │   ├── delegate.md          # Smart routing
 │   └── uninstall.md         # Cleanup
 ├── skills/
-│   ├── codex.md             # Global /codex shortcut
-│   ├── gemini.md            # Global /gemini shortcut
-│   └── delegate.md          # Global /delegate shortcut
+│   └── delegate/
+│       └── SKILL.md         # Global /delegate shortcut with smart routing
 ├── docs/
 │   └── plans/               # Planning documents (not in git)
 ├── README.md                # User documentation
@@ -52,7 +51,7 @@ cli-handoff/
 ## Adding a New CLI Tool
 
 1. Create `commands/<tool>.md` with the delegation logic
-2. Create `skills/<tool>.md` for global shortcut
+2. Update `skills/delegate/SKILL.md` to add routing for the new tool
 3. Update `commands/setup.md` to verify installation
 4. Update `commands/delegate.md` routing keywords
 5. Update `commands/uninstall.md` cleanup
@@ -132,10 +131,10 @@ claude --plugin-dir /path/to/cli-handoff
 /cli-handoff:delegate explain the architecture
 # Expected: Routes to Gemini, shows reasoning
 
-# 4. Test global shortcuts
-/codex test task
-/gemini test task
+# 4. Test global shortcut
 /delegate test task
+/delegate codex test task
+/delegate gemini test task
 ```
 
 ## Code Style
