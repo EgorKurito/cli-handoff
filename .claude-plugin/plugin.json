@@ -1,7 +1,7 @@
 {
   "name": "cli-handoff",
   "description": "Manual delegation commands to Codex CLI (via MCP) and Gemini CLI (via shell)",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Egor Kurito"
   },
