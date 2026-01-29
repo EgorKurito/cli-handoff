@@ -3,7 +3,7 @@ description: Check CLI tools and install global skill shortcuts
 user-invocable: true
 ---
 
-Check that Codex CLI and Gemini CLI are installed, and provide installation commands if needed.
+Check that Codex CLI and Gemini CLI are installed, and install the global /delegate skill.
 
 ## Instructions
 
@@ -22,24 +22,31 @@ Check that Codex CLI and Gemini CLI are installed, and provide installation comm
    npm install -g @google/gemini-cli
    ```
 
-4) Install global skill shortcuts:
+4) Install global /delegate skill:
+
+   Create the skill directory:
    ```bash
-   mkdir -p ~/.claude/skills
+   mkdir -p ~/.claude/skills/delegate
    ```
-   Then copy skill files from this plugin's `skills/` directory to `~/.claude/skills/`:
-   - `codex.md`
-   - `gemini.md`
-   - `delegate.md`
 
-   Use the Read tool to get each file's content from the plugin directory, then Write tool to save to `~/.claude/skills/`.
+   Read the SKILL.md content from this plugin's `skills/delegate/SKILL.md` using the Read tool, then use the Write tool to save it to `~/.claude/skills/delegate/SKILL.md`.
 
-5) Verify installation:
+5) Clean up old skill files (from previous versions):
    ```bash
-   ls ~/.claude/skills/
+   rm -f ~/.claude/skills/codex.md ~/.claude/skills/gemini.md ~/.claude/skills/delegate.md
    ```
-   Should show: `codex.md`, `delegate.md`, `gemini.md`
 
-6) After installation:
+6) Verify installation:
+   ```bash
+   ls ~/.claude/skills/delegate/
+   ```
+   Should show: `SKILL.md`
+
+7) After installation:
    - Remind to restart Claude Code if MCP tools don't appear.
    - Verify that `mcp__codex__codex` tool is available.
-   - Confirm: "Global shortcuts /codex, /gemini, /delegate are now available from any project."
+   - Confirm: "Global shortcut `/delegate` is now available from any project."
+   - Explain usage:
+     - `/delegate <task>` — automatic routing
+     - `/delegate codex <task>` — explicit Codex
+     - `/delegate gemini <task>` — explicit Gemini

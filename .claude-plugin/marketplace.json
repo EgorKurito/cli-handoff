@@ -8,8 +8,8 @@
     {
       "name": "cli-handoff",
       "source": "./",
-      "description": "Manual delegation commands to Codex CLI (via MCP) and Gemini CLI (via shell)",
-      "version": "0.4.0",
+      "description": "Smart delegation to Codex CLI (via MCP) and Gemini CLI (via shell) with unified /delegate command",
+      "version": "0.5.0",
       "author": {
         "name": "Egor Kurito",
         "url": "https://github.com/egorkurito"
