@@ -1,0 +1,14 @@
+{
+  "name": "cli-handoff",
+  "owner": {
+    "name": "Egor Kurito"
+  },
+  "plugins": [
+    {
+      "name": "cli-handoff",
+      "source": "..",
+      "description": "Manual delegation commands to Codex CLI (via MCP) and Gemini CLI (via shell)",
+      "version": "0.1.0"
+    }
+  ]
+}
