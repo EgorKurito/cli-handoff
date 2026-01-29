@@ -1,44 +1,42 @@
 ---
-description: Делегировать задачу в Gemini CLI через shell
+description: Delegate task to Gemini CLI via shell
 user-invocable: true
 ---
 
-Ты — "ручной диспетчер". Делегируй задачу в Gemini CLI и верни ответ.
+You are a "manual dispatcher". Delegate the task to Gemini CLI and return the response.
 
-## Задача пользователя
+## User Task
 
 $ARGUMENTS
 
-## Инструкции
+## Instructions
 
-1) Сформируй полный промпт для Gemini, включающий:
-   - Исходную задачу пользователя
-   - Просьбу ответить на русском
-   - Контекст текущей директории (если релевантно)
+1) Compose a full prompt for Gemini, including:
+   - The original user task
+   - Context of the current directory (if relevant)
 
-2) Сохрани промпт во временный файл (избегаем проблем с кавычками):
+2) Save the prompt to a temporary file (to avoid quoting issues):
 
 ```bash
 cat > /tmp/gemini_prompt.txt <<'PROMPT_EOF'
-Задача: {задача пользователя}
+Task: {user task}
 
-Требования:
-- Ответь на русском языке
-- Если нужны правки кода — покажи diff или полный код
+Requirements:
+- If code changes are needed — show diff or full code
 PROMPT_EOF
 ```
 
-3) Запусти Gemini CLI в режиме SDK-запроса (не интерактив):
+3) Run Gemini CLI in SDK query mode (non-interactive):
 
 ```bash
 gemini -p "$(cat /tmp/gemini_prompt.txt)"
 ```
 
-4) Верни результат:
-   - Сначала вывод Gemini как есть (в fenced-блоке)
-   - Затем 5–10 строк твоего синтеза: что важно, что делать дальше
+4) Return the result:
+   - First, Gemini output as-is (in a fenced block)
+   - Then 5–10 lines of your synthesis: what's important, what to do next
 
-5) Удали временный файл:
+5) Delete the temporary file:
 
 ```bash
 rm /tmp/gemini_prompt.txt

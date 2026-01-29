@@ -1,27 +1,27 @@
 ---
-description: Проверка установки Codex CLI и Gemini CLI
+description: Check Codex CLI and Gemini CLI installation
 user-invocable: true
 ---
 
-Проверь, что установлены Codex CLI и Gemini CLI, и подскажи команды установки.
+Check that Codex CLI and Gemini CLI are installed, and provide installation commands if needed.
 
-## Инструкции
+## Instructions
 
-1) Проверь версии (используй Bash tool):
+1) Check versions (use Bash tool):
    - `codex --version`
    - `gemini --version`
 
-2) Если Codex не установлен — предложи:
+2) If Codex is not installed — suggest:
    ```bash
    npm install -g @openai/codex
    codex login
    ```
 
-3) Если Gemini не установлен — предложи:
+3) If Gemini is not installed — suggest:
    ```bash
    npm install -g @google/gemini-cli
    ```
 
-4) После установки:
-   - Напомни перезапустить Claude Code, если MCP-инструменты не появились.
-   - Проверь, что инструмент `mcp__codex__codex` доступен.
+4) After installation:
+   - Remind to restart Claude Code if MCP tools don't appear.
+   - Verify that `mcp__codex__codex` tool is available.

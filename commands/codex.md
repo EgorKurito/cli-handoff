@@ -1,38 +1,36 @@
 ---
-description: Делегировать задачу в Codex CLI через MCP
+description: Delegate task to Codex CLI via MCP
 user-invocable: true
 ---
 
-Ты — "ручной диспетчер". Делегируй задачу в Codex CLI через MCP.
+You are a "manual dispatcher". Delegate the task to Codex CLI via MCP.
 
-## Задача пользователя
+## User Task
 
 $ARGUMENTS
 
-## Инструкции
+## Instructions
 
-1) Вызови инструмент `mcp__codex__codex` РОВНО ОДИН РАЗ.
+1) Call the `mcp__codex__codex` tool EXACTLY ONCE.
 
-2) В параметр `prompt` передай:
-   - Исходную задачу пользователя (как есть)
-   - Просьбу ответить на русском
-   - Просьбу НЕ применять изменения автоматически
-   - Если нужны правки — выдать unified diff (patch)
-   - Явно перечислить, какие файлы затрагиваются
+2) In the `prompt` parameter, include:
+   - The original user task (as-is)
+   - Request to NOT apply changes automatically
+   - If changes are needed — provide unified diff (patch)
+   - Explicitly list which files are affected
 
-3) После ответа Codex:
-   - НЕ делай "raw passthrough"
-   - Синтезируй: коротко объясни выводы и следующий шаг
-   - Если Codex дал diff — выведи diff отдельным fenced-блоком с подсветкой `diff`
+3) After Codex responds:
+   - Do NOT do "raw passthrough"
+   - Synthesize: briefly explain conclusions and next steps
+   - If Codex provided a diff — output the diff in a separate fenced block with `diff` highlighting
 
-## Формат промпта для Codex
+## Prompt Format for Codex
 
 ```
-Задача: {задача пользователя}
+Task: {user task}
 
-Требования:
-- Ответь на русском языке
-- НЕ применяй изменения автоматически
-- Если нужны правки кода — выдай unified diff (patch)
-- Перечисли все затрагиваемые файлы
+Requirements:
+- Do NOT apply changes automatically
+- If code changes are needed — provide unified diff (patch)
+- List all affected files
 ```
